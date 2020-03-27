@@ -2,7 +2,7 @@ import React from "react";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 
-function App() {
+const App = () => {
   return (
     <>
       <section className="todoapp">
@@ -63,6 +63,6 @@ function App() {
       </footer>
     </>
   );
-}
+};
 
 export default App;
