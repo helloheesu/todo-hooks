@@ -17,3 +17,5 @@ Implement Todo App, using React's Native Hooks API
 - [x] Clear all complete
   - [x] Hide if clear-completed if no complete items are left
 - [ ] Edit a todo
+  - [x] Change to editing mode when dbclick
+  - [ ] Apply when enter
