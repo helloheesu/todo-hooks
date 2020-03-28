@@ -68,6 +68,12 @@ const App = () => {
     setTodoList(newTodoList);
   };
 
+  const handleClickClearAllComplete = () => {
+    const newTodoList = todoList.filter(({ isComplete }) => !isComplete);
+
+    setTodoList(newTodoList);
+  };
+
   return (
     <Router>
       <section className="todoapp">
@@ -142,7 +148,14 @@ const App = () => {
                   </NavLink>
                 </li>
               </ul>
-              <button className="clear-completed">Clear completed</button>
+              {todoList.some(({ isComplete }) => isComplete) && (
+                <button
+                  className="clear-completed"
+                  onClick={handleClickClearAllComplete}
+                >
+                  Clear completed
+                </button>
+              )}
             </footer>
           </>
         ) : null}

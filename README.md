@@ -14,6 +14,6 @@ Implement Todo App, using React's Native Hooks API
   - [x] if not every todo is complete, toggle should be off
   - [x] if every todo is complete, toggle should be on
 - [x] Filter todo list
-- [ ] Hide if clear-completed if no complete items are left
-- [ ] Clear all complete
+- [x] Clear all complete
+  - [x] Hide if clear-completed if no complete items are left
 - [ ] Edit a todo
