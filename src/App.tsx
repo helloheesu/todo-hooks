@@ -2,9 +2,16 @@ import React, { useState, KeyboardEvent, ChangeEvent } from "react";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 
+type TodoValue = string;
+type Todo = {
+  id: string;
+  value: TodoValue;
+  isComplete: boolean;
+};
+
 const App = () => {
-  const [todoList, setTodoList] = useState<string[]>([]);
-  const [input, setInput] = useState<string>("");
+  const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [input, setInput] = useState<TodoValue>("");
 
   const handleKeyup = ({ key }: KeyboardEvent<HTMLInputElement>) => {
     if (key !== "Enter") {
@@ -16,7 +23,15 @@ const App = () => {
       return;
     }
 
-    setTodoList(todoList.concat([todo]));
+    setTodoList(
+      todoList.concat([
+        {
+          id: Date.now().toString(),
+          value: todo,
+          isComplete: false
+        }
+      ])
+    );
     setInput("");
   };
 
@@ -44,24 +59,20 @@ const App = () => {
               <input id="toggle-all" className="toggle-all" type="checkbox" />
               <label htmlFor="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
-                {todoList.map(todo => (
-                  <li>
+                {todoList.map(({ id, value, isComplete }) => (
+                  <li key={id} className={isComplete ? "completed" : ""}>
                     <div className="view">
-                      <input className="toggle" type="checkbox" />
-                      <label>{todo}</label>
+                      <input
+                        className="toggle"
+                        type="checkbox"
+                        checked={isComplete}
+                      />
+                      <label>{value}</label>
                       <button className="destroy"></button>
                     </div>
-                    <input className="edit" value={todo} />
+                    <input className="edit" value={value} />
                   </li>
                 ))}
-                {/* <li className="completed">
-                  <div className="view">
-                    <input className="toggle" type="checkbox" checked />
-                    <label>Taste JavaScript</label>
-                    <button className="destroy"></button>
-                  </div>
-                  <input className="edit" value="Create a TodoMVC template" />
-                </li> */}
               </ul>
             </section>
             <footer className="footer">
