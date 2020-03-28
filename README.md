@@ -7,5 +7,6 @@ Implement Todo App, using React's Native Hooks API
 - [x] Hide the list when the data is empty
 - [x] Create a new todo
 - [x] Destroy a todo
-- [ ] Complete a todo
+- [x] Complete a todo
+- [ ] Complete all
 - [ ] Filter todo list

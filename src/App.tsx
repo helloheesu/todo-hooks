@@ -31,6 +31,23 @@ const App = () => {
     setTodoList(newTodoList);
   };
 
+  const handleToggleComplete = (id: Id, isComplete: boolean) => {
+    const index = todoList.findIndex(todo => todo.id === id);
+    if (index < 0) {
+      return;
+    }
+
+    const oldTodo = todoList[index];
+
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1, {
+      ...oldTodo,
+      isComplete
+    });
+
+    setTodoList(newTodoList);
+  };
+
   return (
     <>
       <section className="todoapp">
@@ -45,13 +62,21 @@ const App = () => {
               <label htmlFor="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
                 {todoList.map(todo => (
-                  <TodoItem key={todo.id} todo={todo} onRemove={handleRemove} />
+                  <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onRemove={handleRemove}
+                    onToggleComplete={handleToggleComplete}
+                  />
                 ))}
               </ul>
             </section>
             <footer className="footer">
               <span className="todo-count">
-                <strong>{todoList.length}</strong> item left
+                <strong>
+                  {todoList.filter(({ isComplete }) => !isComplete).length}
+                </strong>{" "}
+                item left
               </span>
               <ul className="filters">
                 <li>
