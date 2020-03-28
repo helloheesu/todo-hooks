@@ -1,13 +1,7 @@
 import React, { useState, KeyboardEvent, ChangeEvent } from "react";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
-
-type TodoValue = string;
-type Todo = {
-  id: string;
-  value: TodoValue;
-  isComplete: boolean;
-};
+import TodoItem from "./TodoItem";
 
 const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -59,19 +53,8 @@ const App = () => {
               <input id="toggle-all" className="toggle-all" type="checkbox" />
               <label htmlFor="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
-                {todoList.map(({ id, value, isComplete }) => (
-                  <li key={id} className={isComplete ? "completed" : ""}>
-                    <div className="view">
-                      <input
-                        className="toggle"
-                        type="checkbox"
-                        checked={isComplete}
-                      />
-                      <label>{value}</label>
-                      <button className="destroy"></button>
-                    </div>
-                    <input className="edit" value={value} />
-                  </li>
+                {todoList.map(todo => (
+                  <TodoItem todo={todo} />
                 ))}
               </ul>
             </section>
