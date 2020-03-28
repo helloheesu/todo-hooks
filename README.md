@@ -1,9 +1,11 @@
 # React Hooks • [TodoMVC](http://todomvc.com)
 
 Implement Todo App, using React's Native Hooks API
+
 - Hooks: https://reactjs.org/docs/hooks-intro.html
 
 # Todo Spec
+
 - [x] Hide the list when the data is empty
 - [x] Create a new todo
 - [x] Destroy a todo
@@ -11,4 +13,7 @@ Implement Todo App, using React's Native Hooks API
 - [x] Toggle all todo complete
   - [x] if not every todo is complete, toggle should be off
   - [x] if every todo is complete, toggle should be on
-- [ ] Filter todo list
+- [x] Filter todo list
+- [ ] Hide if clear-completed if no complete items are left
+- [ ] Clear all complete
+- [ ] Edit a todo

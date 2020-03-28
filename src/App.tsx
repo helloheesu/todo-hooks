@@ -8,8 +8,15 @@ import ToggleAllComplete from "./ToggleAll";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 
+enum Filter {
+  All,
+  Active,
+  Completed
+}
+
 const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.All);
 
   const handleCreate = (value: string) => {
     setTodoList(
@@ -76,14 +83,26 @@ const App = () => {
                 onToggleAllComplete={handleToggleAllComplete}
               />
               <ul className="todo-list">
-                {todoList.map(todo => (
-                  <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    onRemove={handleRemove}
-                    onToggleComplete={handleToggleComplete}
-                  />
-                ))}
+                {todoList
+                  .filter(({ isComplete }) => {
+                    switch (selectedFilter) {
+                      case Filter.Active:
+                        return !isComplete;
+                      case Filter.Completed:
+                        return isComplete;
+                      default:
+                      case Filter.All:
+                        return true;
+                    }
+                  })
+                  .map(todo => (
+                    <TodoItem
+                      key={todo.id}
+                      todo={todo}
+                      onRemove={handleRemove}
+                      onToggleComplete={handleToggleComplete}
+                    />
+                  ))}
               </ul>
             </section>
             <footer className="footer">
@@ -95,17 +114,30 @@ const App = () => {
               </span>
               <ul className="filters">
                 <li>
-                  <NavLink exact to="/" activeClassName="selected">
+                  <NavLink
+                    exact
+                    to="/"
+                    activeClassName="selected"
+                    onClick={() => setSelectedFilter(Filter.All)}
+                  >
                     All
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/active" activeClassName="selected">
+                  <NavLink
+                    to="/active"
+                    activeClassName="selected"
+                    onClick={() => setSelectedFilter(Filter.Active)}
+                  >
                     Active
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/completed" activeClassName="selected">
+                  <NavLink
+                    to="/completed"
+                    activeClassName="selected"
+                    onClick={() => setSelectedFilter(Filter.Completed)}
+                  >
                     Completed
                   </NavLink>
                 </li>
