@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import "todomvc-common/base.css";
-import "todomvc-app-css/index.css";
+import { HashRouter as Router, NavLink } from "react-router-dom";
+
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
 import ToggleAllComplete from "./ToggleAll";
+
+import "todomvc-common/base.css";
+import "todomvc-app-css/index.css";
 
 const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -59,7 +62,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <Router>
       <section className="todoapp">
         <header className="header">
           <h1>todos</h1>
@@ -92,15 +95,19 @@ const App = () => {
               </span>
               <ul className="filters">
                 <li>
-                  <a className="selected" href="#/">
+                  <NavLink exact to="/" activeClassName="selected">
                     All
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a href="#/active">Active</a>
+                  <NavLink to="/active" activeClassName="selected">
+                    Active
+                  </NavLink>
                 </li>
                 <li>
-                  <a href="#/completed">Completed</a>
+                  <NavLink to="/completed" activeClassName="selected">
+                    Completed
+                  </NavLink>
                 </li>
               </ul>
               <button className="clear-completed">Clear completed</button>
@@ -117,7 +124,7 @@ const App = () => {
           Part of <a href="http://todomvc.com">TodoMVC</a>
         </p>
       </footer>
-    </>
+    </Router>
   );
 };
 
