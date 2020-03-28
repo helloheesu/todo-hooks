@@ -59,6 +59,23 @@ const App = () => {
     setTodoList(newTodoList);
   };
 
+  const handleEdit = (id: Id, value: TodoValue) => {
+    const index = todoList.findIndex(todo => todo.id === id);
+    if (index < 0) {
+      return;
+    }
+
+    const oldTodo = todoList[index];
+
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1, {
+      ...oldTodo,
+      value
+    });
+
+    setTodoList(newTodoList);
+  };
+
   const handleToggleAllComplete = (isComplete: boolean) => {
     const newTodoList = todoList.map(todo => ({
       ...todo,
@@ -107,6 +124,7 @@ const App = () => {
                       todo={todo}
                       onRemove={handleRemove}
                       onToggleComplete={handleToggleComplete}
+                      onEdit={handleEdit}
                     />
                   ))}
               </ul>

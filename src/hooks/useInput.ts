@@ -1,11 +1,15 @@
-import { useState, KeyboardEvent, ChangeEvent } from "react";
+import { useState, KeyboardEvent, ChangeEvent, useEffect } from "react";
 
 type Props = {
   onCreate: (value: string) => void;
+  initialValue?: string;
 };
 
-const useInput = ({ onCreate }: Props) => {
+const useInput = ({ onCreate, initialValue = "" }: Props) => {
   const [value, setValue] = useState<string>("");
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
   const onKeyUp = ({ key }: KeyboardEvent<HTMLInputElement>) => {
     if (key !== "Enter") {
