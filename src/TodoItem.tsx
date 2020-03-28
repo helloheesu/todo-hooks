@@ -4,9 +4,9 @@ type Props = {
   todo: Todo;
 };
 const TodoItem = ({ todo }: Props) => {
-  const { id, value, isComplete } = todo;
+  const { value, isComplete } = todo;
   return (
-    <li key={id} className={isComplete ? "completed" : ""}>
+    <li className={isComplete ? "completed" : ""}>
       <div className="view">
         <input className="toggle" type="checkbox" checked={isComplete} />
         <label>{value}</label>

@@ -1,37 +1,22 @@
-import React, { useState, KeyboardEvent, ChangeEvent } from "react";
+import React, { useState } from "react";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 import TodoItem from "./TodoItem";
+import TodoInput from "./TodoInput";
 
 const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
-  const [input, setInput] = useState<TodoValue>("");
 
-  const handleKeyup = ({ key }: KeyboardEvent<HTMLInputElement>) => {
-    if (key !== "Enter") {
-      return;
-    }
-
-    const todo = input.trim();
-    if (!todo) {
-      return;
-    }
-
+  const handleCreate = (value: string) => {
     setTodoList(
       todoList.concat([
         {
           id: Date.now().toString(),
-          value: todo,
+          value,
           isComplete: false
         }
       ])
     );
-    setInput("");
-  };
-
-  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const { value } = target;
-    setInput(value);
   };
 
   return (
@@ -39,13 +24,7 @@ const App = () => {
       <section className="todoapp">
         <header className="header">
           <h1>todos</h1>
-          <input
-            className="new-todo"
-            placeholder="What needs to be done?"
-            value={input}
-            onKeyUp={handleKeyup}
-            onChange={handleChange}
-          />
+          <TodoInput onCreate={handleCreate} />
         </header>
         {todoList.length ? (
           <>
@@ -54,7 +33,7 @@ const App = () => {
               <label htmlFor="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
                 {todoList.map(todo => (
-                  <TodoItem todo={todo} />
+                  <TodoItem key={todo.id} todo={todo} />
                 ))}
               </ul>
             </section>
