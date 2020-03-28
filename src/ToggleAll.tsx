@@ -1,9 +1,10 @@
 import React, { ChangeEvent } from "react";
 
 type Props = {
+  isCompleteList: boolean[];
   onToggleAllComplete: (isCompleteAll: boolean) => void;
 };
-const ToggleAllComplete = ({ onToggleAllComplete }: Props) => {
+const ToggleAllComplete = ({ isCompleteList, onToggleAllComplete }: Props) => {
   const handleChangeAllComplete = ({ target }: ChangeEvent<HTMLInputElement>) =>
     onToggleAllComplete(target.checked);
 
@@ -14,6 +15,7 @@ const ToggleAllComplete = ({ onToggleAllComplete }: Props) => {
         className="toggle-all"
         type="checkbox"
         onChange={handleChangeAllComplete}
+        checked={isCompleteList.every(v => v)}
       />
       <label htmlFor="toggle-all">Mark all as complete</label>
     </>

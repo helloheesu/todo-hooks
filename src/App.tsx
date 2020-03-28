@@ -69,6 +69,7 @@ const App = () => {
           <>
             <section className="main">
               <ToggleAllComplete
+                isCompleteList={todoList.map(({ isComplete }) => isComplete)}
                 onToggleAllComplete={handleToggleAllComplete}
               />
               <ul className="todo-list">
