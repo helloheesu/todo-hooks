@@ -19,6 +19,18 @@ const App = () => {
     );
   };
 
+  const handleRemove = (id: Id) => {
+    const index = todoList.findIndex(todo => todo.id === id);
+    if (index < 0) {
+      return;
+    }
+
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1);
+
+    setTodoList(newTodoList);
+  };
+
   return (
     <>
       <section className="todoapp">
@@ -33,7 +45,7 @@ const App = () => {
               <label htmlFor="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
                 {todoList.map(todo => (
-                  <TodoItem key={todo.id} todo={todo} />
+                  <TodoItem key={todo.id} todo={todo} onRemove={handleRemove} />
                 ))}
               </ul>
             </section>

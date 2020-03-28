@@ -1,6 +1,7 @@
+type Id = string;
 type TodoValue = string;
 type Todo = {
-  id: string;
+  id: Id;
   value: TodoValue;
   isComplete: boolean;
 };
