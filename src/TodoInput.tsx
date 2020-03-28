@@ -1,37 +1,17 @@
-import React, { useState, KeyboardEvent, ChangeEvent } from "react";
+import React from "react";
+import useInput from "./hooks/useInput";
 
 type Props = {
   onCreate: (value: string) => void;
 };
 const TodoItem = ({ onCreate }: Props) => {
-  const [input, setInput] = useState<TodoValue>("");
-
-  const handleKeyup = ({ key }: KeyboardEvent<HTMLInputElement>) => {
-    if (key !== "Enter") {
-      return;
-    }
-
-    const value = input.trim();
-    if (!value) {
-      return;
-    }
-
-    onCreate(value);
-    setInput("");
-  };
-
-  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const { value } = target;
-    setInput(value);
-  };
+  const inputHook = useInput({ onCreate });
 
   return (
     <input
+      {...inputHook}
       className="new-todo"
       placeholder="What needs to be done?"
-      value={input}
-      onKeyUp={handleKeyup}
-      onChange={handleChange}
     />
   );
 };
