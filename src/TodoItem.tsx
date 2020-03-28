@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent, useState } from "react";
+import React, { ChangeEvent, MouseEvent, KeyboardEvent, useState } from "react";
 import useInput from "./hooks/useInput";
 
 type Props = {
@@ -27,6 +27,15 @@ const TodoItem = ({ todo, onRemove, onToggleComplete, onEdit }: Props) => {
     onCreate: handleEdit,
     initialValue: value
   });
+  const handleKeyUpOnEdit = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Escape") {
+      inputHook.onKeyUp(e);
+      return;
+    }
+
+    setIsEditing(false);
+    inputHook.setValue(value);
+  };
 
   return (
     <li
@@ -43,7 +52,12 @@ const TodoItem = ({ todo, onRemove, onToggleComplete, onEdit }: Props) => {
         <label>{value}</label>
         <button className="destroy" onClick={handleClickRemove}></button>
       </div>
-      <input {...inputHook} className="edit" />
+      <input
+        value={inputHook.value}
+        onChange={inputHook.onChange}
+        onKeyUp={handleKeyUpOnEdit}
+        className="edit"
+      />
     </li>
   );
 };

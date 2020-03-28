@@ -16,7 +16,15 @@ Implement Todo App, using React's Native Hooks API
 - [x] Filter todo list
 - [x] Clear all complete
   - [x] Hide if clear-completed if no complete items are left
-- [ ] Edit a todo
+- [x] Edit a todo
   - [x] Change to editing mode when dbclick
   - [x] Apply when enter
-  - [ ] Go back to prev mode when esc
+  - [x] Go back to prev mode when esc
+
+# Further Spec
+
+- [ ] Data save on local
+- [ ] Signup/Signin
+  - [ ] Seperate todo list for each user
+- [ ] Sync local data when sign in
+  - [ ] Dialog (Local/Server/Merge) data

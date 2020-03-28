@@ -30,7 +30,7 @@ const useInput = ({ onCreate, initialValue = "" }: Props) => {
     setValue(value);
   };
 
-  return { onKeyUp, onChange, value };
+  return { onKeyUp, onChange, value, setValue };
 };
 
 export default useInput;

@@ -5,11 +5,13 @@ type Props = {
   onCreate: (value: string) => void;
 };
 const TodoItem = ({ onCreate }: Props) => {
-  const inputHook = useInput({ onCreate });
+  const { value, onChange, onKeyUp } = useInput({ onCreate });
 
   return (
     <input
-      {...inputHook}
+      value={value}
+      onChange={onChange}
+      onKeyUp={onKeyUp}
       className="new-todo"
       placeholder="What needs to be done?"
     />
