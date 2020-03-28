@@ -1,8 +1,9 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
+import ToggleAllComplete from "./ToggleAll";
 
 const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -48,7 +49,7 @@ const App = () => {
     setTodoList(newTodoList);
   };
 
-  const handleToggleCompleteAll = (isComplete: boolean) => {
+  const handleToggleAllComplete = (isComplete: boolean) => {
     const newTodoList = todoList.map(todo => ({
       ...todo,
       isComplete
@@ -56,10 +57,6 @@ const App = () => {
 
     setTodoList(newTodoList);
   };
-
-  const handleClickToggleComplete = ({
-    target
-  }: ChangeEvent<HTMLInputElement>) => handleToggleCompleteAll(target.checked);
 
   return (
     <>
@@ -71,13 +68,9 @@ const App = () => {
         {todoList.length ? (
           <>
             <section className="main">
-              <input
-                id="toggle-all"
-                className="toggle-all"
-                type="checkbox"
-                onChange={handleClickToggleComplete}
+              <ToggleAllComplete
+                onToggleAllComplete={handleToggleAllComplete}
               />
-              <label htmlFor="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
                 {todoList.map(todo => (
                   <TodoItem
