@@ -1,16 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, KeyboardEvent, ChangeEvent } from "react";
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 
 const App = () => {
-  const [todoList] = useState([]);
+  const [todoList, setTodoList] = useState<string[]>([]);
+  const [input, setInput] = useState<string>("");
+
+  const handleKeyup = ({ key }: KeyboardEvent<HTMLInputElement>) => {
+    if (key !== "Enter") {
+      return;
+    }
+
+    const todo = input.trim();
+    if (!todo) {
+      return;
+    }
+
+    setTodoList(todoList.concat([todo]));
+    setInput("");
+  };
+
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { value } = target;
+    setInput(value);
+  };
 
   return (
     <>
       <section className="todoapp">
         <header className="header">
           <h1>todos</h1>
-          <input className="new-todo" placeholder="What needs to be done?" />
+          <input
+            className="new-todo"
+            placeholder="What needs to be done?"
+            value={input}
+            onKeyUp={handleKeyup}
+            onChange={handleChange}
+          />
         </header>
         {todoList.length ? (
           <>
