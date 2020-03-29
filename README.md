@@ -24,6 +24,7 @@ Implement Todo App, using React's Native Hooks API
 # Further Spec
 
 - [x] Mobile - hover (touch, not double!)
+- [x] Title
 - [ ] Data save on local
 - [ ] Signup/Signin
   - [ ] Seperate todo list for each user
@@ -37,3 +38,4 @@ Implement Todo App, using React's Native Hooks API
 - [ ] husky, CI hooks
 - [ ] Service worker?
 - [ ] Google Analytics
+- [ ] PWA + favicon
