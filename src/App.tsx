@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { HashRouter as Router, NavLink } from "react-router-dom";
 
-import TodoItem from "./TodoItem";
-import TodoInput from "./TodoInput";
-import ToggleAllComplete from "./ToggleAll";
+import TodoItem from "./components/TodoItem";
+import TodoInput from "./components/TodoInput";
+import ToggleAllComplete from "./components/ToggleAll";
 
-import "./style.css";
-import "./hover.css";
+import "./styles/style.css";
+import "./styles/hover.css";
 
 enum Filter {
   All,

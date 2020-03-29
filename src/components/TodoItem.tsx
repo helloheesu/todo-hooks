@@ -1,5 +1,5 @@
 import React, { ChangeEvent, MouseEvent, KeyboardEvent, useState } from "react";
-import useInput from "./hooks/useInput";
+import useInput from "../hooks/useInput";
 
 type Props = {
   todo: Todo;

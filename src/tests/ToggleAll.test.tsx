@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import ToggleAll from "./ToggleAll";
+import ToggleAll from "../components/ToggleAll";
 
 describe("Toggle All > When 3 items are given", () => {
   const isAllCompleteChecked = (container: HTMLElement) => {
