@@ -6,6 +6,7 @@ import TodoInput from "./TodoInput";
 import ToggleAllComplete from "./ToggleAll";
 
 import "./style.css";
+import "./hover.css";
 
 enum Filter {
   All,

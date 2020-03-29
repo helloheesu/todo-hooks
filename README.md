@@ -23,6 +23,9 @@ Implement Todo App, using React's Native Hooks API
 
 # Further Spec
 
+- [x] Mobile - hover (touch, not double!)
+- [ ] (Dev) Arrange directory
+- [ ] (Dev) E2E tests
 - [ ] Data save on local
 - [ ] Signup/Signin
   - [ ] Seperate todo list for each user

@@ -1,0 +1,27 @@
+@media (hover: hover) {
+  .todo-list li .destroy:hover {
+    color: #af5b5e;
+  }
+
+  .todo-list li:hover .destroy {
+    display: block;
+  }
+
+  .filters li a:hover {
+    border-color: rgba(175, 47, 47, 0.1);
+  }
+
+  .clear-completed:hover {
+    text-decoration: underline;
+  }
+
+  .info a:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (hover: none) {
+  .todo-list li .destroy {
+    display: block;
+  }
+}

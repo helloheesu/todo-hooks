@@ -236,16 +236,8 @@ body {
   transition: color 0.2s ease-out;
 }
 
-.todo-list li .destroy:hover {
-  color: #af5b5e;
-}
-
 .todo-list li .destroy:after {
   content: "×";
-}
-
-.todo-list li:hover .destroy {
-  display: block;
 }
 
 .todo-list li .edit {
@@ -308,10 +300,6 @@ body {
   border-radius: 3px;
 }
 
-.filters li a:hover {
-  border-color: rgba(175, 47, 47, 0.1);
-}
-
 .filters li a.selected {
   border-color: rgba(175, 47, 47, 0.2);
 }
@@ -323,10 +311,6 @@ html .clear-completed:active {
   line-height: 20px;
   text-decoration: none;
   cursor: pointer;
-}
-
-.clear-completed:hover {
-  text-decoration: underline;
 }
 
 .info {
@@ -345,10 +329,6 @@ html .clear-completed:active {
   color: inherit;
   text-decoration: none;
   font-weight: 400;
-}
-
-.info a:hover {
-  text-decoration: underline;
 }
 
 /*
