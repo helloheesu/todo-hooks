@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
 import ToggleAllComplete from "./ToggleAll";
 
-import "todomvc-app-css/index.css";
+import "./style.css";
 
 enum Filter {
   All,
