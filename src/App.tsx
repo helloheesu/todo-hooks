@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HashRouter as Router, NavLink } from "react-router-dom";
 
 import TodoItem from "./components/TodoItem";
@@ -17,6 +17,18 @@ enum Filter {
 const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.All);
+
+  useEffect(() => {
+    const initialTodoList = window.localStorage.getItem("todoList");
+    if (!initialTodoList) {
+      return;
+    }
+    setTodoList(JSON.parse(initialTodoList));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
 
   const handleCreate = (value: string) => {
     setTodoList(
