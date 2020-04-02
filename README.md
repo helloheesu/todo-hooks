@@ -24,8 +24,10 @@ Implement Todo App, using React's Native Hooks API
 # Further Spec
 
 - [x] Mobile - hover (touch, not double!)
+  - [ ] dbtap next to dbclick
 - [x] Title
 - [x] Data save on local
+- [x] Default values as tutorial
 - [ ] Signup/Signin
   - [ ] Seperate todo list for each user
 - [ ] Sync local data when sign in

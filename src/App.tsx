@@ -14,8 +14,27 @@ enum Filter {
   Completed
 }
 
+const INITIAL_TODO_LIST = [
+  {
+    id: "1585833238041",
+    value: "Write todos above and press Enter to add",
+    isComplete: false
+  },
+  {
+    id: "1585833248812",
+    value: "Press the left circle button to mark as complete",
+    isComplete: false
+  },
+  { id: "1585833255377", value: "Double tap to edit", isComplete: false },
+  {
+    id: "1585833265455",
+    value: "Press the X button on the right to delete",
+    isComplete: false
+  }
+];
+
 const App = () => {
-  const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [todoList, setTodoList] = useState<Todo[]>(INITIAL_TODO_LIST);
   const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.All);
 
   useEffect(() => {
